@@ -1,5 +1,5 @@
 """
-URL configuration for myproject project.
+URL configuration for mhd project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/stable/topics/http/urls/
