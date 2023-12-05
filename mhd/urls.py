@@ -6,6 +6,7 @@ from django.urls import path, include
 urlpatterns = [
     path("", include("mhd.stops.urls")),
     path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
 
 if settings.DEBUG:
