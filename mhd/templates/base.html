@@ -11,11 +11,12 @@
             <ul>
                 <li><a href="{% url "index" %}">Titulní Strana</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url "password_change" %}">Odhlášení</a></li>
-                    <li><a href="{% url "logout" %}">password change</a></li>
+                    <li><a href="{% url "logout" %}">Odhlášení</a></li>
+                    <li><a href="{% url "password_change" %}">password change</a></li>
                 {% else %}
+                    <li><a href="{% url "registration" %}">Registrace</a></li>    
                     <li><a href="{% url "login" %}">Přihlášení</a></li>
-                {% endif %}
+                    {% endif %}
             </ul>
         </nav>
         <main>
