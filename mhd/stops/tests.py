@@ -29,4 +29,4 @@ class ViewTestCase(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse("login"))
-        self.assertTrue(User.objects.filter(username=username).exists()       
+        self.assertTrue(User.objects.filter(username=username).exists())      
