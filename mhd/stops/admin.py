@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Station
+
+@admin.register(Station)
+class StationAdmin(admin.ModelAdmin):
+    pass
