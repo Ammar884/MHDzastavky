@@ -2,14 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from .models import Station
 from .forms import StationForm
 
 
 
 def index(request):
-    
-    return render(request, "index.html")
+    stations = Station.objects.filter(user_id=request.user.id)
+    return render(request, "index.html", {"stations": stations})
 
 def registration(request):
     if request.method == "POST":

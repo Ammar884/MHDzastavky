@@ -2,6 +2,14 @@
 
 {% block content %}
     <h1>{% block title %}Jízdní řády MHD{% endblock %}</h1>
+    {% if user.is_authenticated %}
+        <ul>
+        {% for stations in stations %}
+            <li>{{ stations }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
     <p>Toto je titulní strana našeho projektu jízdního řádu MHD.</p>
     <p>Vítáme vás na stránce která Vám přináší jízdní řády MHD.</p>
+    {% endif %}
 {% endblock %}
