@@ -4,8 +4,8 @@
     <h1>{% block title %}Jízdní řády MHD{% endblock %}</h1>
     {% if user.is_authenticated %}
         <ul>
-        {% for stations in stations %}
-            <li>{{ stations }}</li>
+        {% for station in stations %}
+            <li><a href="{% url "detail" station.id %}">{{ station.name }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
