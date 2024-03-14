@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
+from django.views.decorators.cache import cache_page
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
 from .models import Station
 from .forms import StationForm
 from datetime import date
+
 import gtfs_kit
 
 
@@ -44,6 +46,7 @@ def add_item(request):
         form = StationForm()
     return render(request, "add_item.html", {"form": form})
 
+#@cache_page(24 * 60 * 60)
 def detail(request, station_id):
     station = get_object_or_404(Station, id=station_id, user_id=request.user.id)
     g = gtfs_kit.read_feed(settings.BASE_DIR / ".." /  "GTFS.zip", dist_units='km')
