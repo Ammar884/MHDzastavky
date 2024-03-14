@@ -50,7 +50,9 @@ def add_item(request):
 def detail(request, station_id):
     station = get_object_or_404(Station, id=station_id, user_id=request.user.id)
     g = gtfs_kit.read_feed(settings.BASE_DIR / ".." /  "GTFS.zip", dist_units='km')
+    timetables = []
     for identifier in station.identifiers.split(","):
         timetable = g.build_stop_timetable(identifier, (date.today().strftime("%Y%m%d"),))
+        timetables.append(timetable)
         
-    return render(request, "detail.html", {"station": station})
+    return render(request, "detail.html", {"station": station, "timetables" : timetables})

@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{% block title %}Detail{% endblock %}</h1>
+    <h1>{% block title %}Jízdní řád{% endblock %}</h1>
+    
     {{station}}
+    {% for timetable in timetables %} 
+    {{timetable}}
+    {%endfor%}
+
 {% endblock %}
