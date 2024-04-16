@@ -3,9 +3,20 @@
 {% block content %}
     <h1>{% block title %}Jízdní řád{% endblock %}</h1>
     
-    {{station}}
-    {% for timetable in timetables %} 
-    {{timetable}}
-    {%endfor%}
+    <form action = "."> 
+        <input type = "date" name = "date" value = "{{request.GET.date}}">
+        <input type = "submit" value = "confirm">
+    </form>
+    <p>{{ station }}</p>
+    {% for key, timetable in timetables.items %}
+        <div class="title">
+            {{ timetable.info.route_short_name }} {{ timetable.info.route_long_name }} (směr {{ timetable.times.0.trip_headsign }})
+        </div>
+    {% for t in timetable.times %}
+    <div class="content">
+        {{ t.arrival_time|slice:":-3" }}
+    </div>
+    {% endfor %}
+    {% endfor %}
 
 {% endblock %}

@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="titlea">
     <h1>{% block title %}Jízdní řády MHD{% endblock %}</h1>
+</div>
     {% if user.is_authenticated %}
         <ul>
         {% for station in stations %}
@@ -9,7 +11,9 @@
         {% endfor %}
         </ul>
     {% else %}
+    <div class="tscontent">
     <p>Toto je titulní strana našeho projektu jízdního řádu MHD.</p>
     <p>Vítáme vás na stránce která Vám přináší jízdní řády MHD.</p>
+</div>
     {% endif %}
 {% endblock %}

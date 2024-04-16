@@ -6,23 +6,26 @@
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     </head>
-    <body>
-        <nav>
+    <body style="background-color:#c7c5c5">
+        <img src="{% static 'autobus-mhd2.png' %}" id="image-background">
+        <header>
+        <nav class="navv">
             <ul>
-                <li><a href="{% url "index" %}">Titulní Strana</a></li>
+                <a href="{% url "index" %}">Titulní Strana</a>
                 {% if user.is_authenticated %}
                     {% if user.is_staff %}
-                        <li><a href="{% url "admin:index" %}">Administrace</a></li>
+                        <a href="{% url "admin:index" %}">Administrace</a>
                     {% endif %}
-                    <li><a href="{% url "add_station" %}">Přidat Zastávku</a></li>
-                    <li><a href="{% url "password_change" %}">Změna hesla</a></li>
-                    <li><a href="{% url "logout" %}">Odhlášení</a></li>
+                    <a href="{% url "add_station" %}">Přidat Zastávku</a>
+                    <a href="{% url "password_change" %}">Změna hesla</a>
+                    <a href="{% url "logout" %}">Odhlášení</a>
                 {% else %}
-                    <li><a href="{% url "registration" %}">Registrace</a></li>    
-                    <li><a href="{% url "login" %}">Přihlášení</a></li>
+                    <a href="{% url "registration" %}">Registrace</a>   
+                    <a href="{% url "login" %}">Přihlášení</a>
                 {% endif %}
             </ul>
         </nav>
+    </header>
         <main>
             {% if messages %}
             <ul class="messages">

@@ -11,7 +11,7 @@ class StationForm(ModelForm):
     
     def clean_name(self):
         name = self.cleaned_data["name"]
-        g = gtfs_kit.read_feed(settings.BASE_DIR / ".." /  "GTFS.zip", dist_units='km')
+        g = gtfs_kit.read_feed(settings.BASE_DIR.parent /  "GTFS.zip", dist_units='km')
         self.identifiers = g.stops[g.stops["stop_name"].str.contains(name, case = False)]["stop_id"].tolist()
         if not self.identifiers:
             raise ValidationError("Zastávka nebyla nalezena")
